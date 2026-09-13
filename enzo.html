@@ -2779,6 +2779,125 @@ footer strong{
   .mobile-menu-btn{z-index:4002 !important;}
 }
 
+
+/* =========================================================
+   HAYMOVIDA — MOBILE FINAL / TOUCH LAYOUT
+   ========================================================= */
+@media (max-width: 850px){
+  html{width:100%;min-width:0!important;overflow-x:hidden!important;}
+  body{width:100%;min-width:0!important;overflow-x:hidden!important;font-size:16px!important;}
+
+  /* Header: simple and always above everything */
+  nav{
+    position:fixed!important;top:0!important;left:0!important;right:0!important;
+    width:100%!important;height:76px!important;min-height:76px!important;
+    padding:10px 16px!important;margin:0!important;
+    display:flex!important;align-items:center!important;justify-content:space-between!important;
+    background:#0122CF!important;border-bottom:1px solid rgba(255,255,255,.18)!important;
+    z-index:100000!important;isolation:isolate!important;
+  }
+  nav>a{display:flex!important;align-items:center!important;flex:1 1 auto!important;min-width:0!important;z-index:100003!important;}
+  .logo-img{
+    width:155px!important;height:auto!important;max-width:calc(100vw - 90px)!important;
+    object-fit:contain!important;object-position:left center!important;
+  }
+  .mobile-menu-btn{
+    display:flex!important;position:relative!important;z-index:100004!important;
+    flex:0 0 50px!important;width:50px!important;height:50px!important;
+    margin-left:10px!important;border:1px solid rgba(255,255,255,.35)!important;
+    background:rgba(255,255,255,.12)!important;color:#fff!important;border-radius:14px!important;
+    align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:6px!important;
+    -webkit-tap-highlight-color:transparent!important;
+  }
+  .mobile-menu-btn span{width:23px!important;height:2.5px!important;background:#fff!important;}
+
+  /* Mobile menu: independent layer, no white full-screen block */
+  .mobile-menu-overlay{
+    position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;
+    background:rgba(0,0,0,.58)!important;z-index:99990!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+    display:block!important;transition:opacity .2s ease,visibility .2s ease!important;
+  }
+  .mobile-menu-overlay.show{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+  .nav-links{
+    position:fixed!important;top:86px!important;left:12px!important;right:12px!important;
+    width:auto!important;height:auto!important;max-height:calc(100dvh - 98px)!important;
+    padding:14px!important;margin:0!important;display:flex!important;flex-direction:column!important;
+    gap:5px!important;align-items:stretch!important;overflow-y:auto!important;
+    background:#0122CF!important;border:1px solid rgba(255,255,255,.22)!important;
+    border-radius:20px!important;box-shadow:0 24px 70px rgba(0,0,0,.55)!important;
+    z-index:99999!important;transform:translateY(-12px)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+    transition:transform .22s ease,opacity .18s ease,visibility .18s ease!important;
+  }
+  .nav-links.open{
+    transform:translateY(0)!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  }
+  .nav-links li{width:100%!important;display:block!important;list-style:none!important;}
+  .nav-links a{
+    display:flex!important;align-items:center!important;width:100%!important;min-height:54px!important;
+    padding:15px 16px!important;border-radius:12px!important;
+    color:#fff!important;font-size:18px!important;line-height:1.2!important;font-weight:800!important;
+    text-decoration:none!important;
+  }
+  .nav-links a.active,.nav-links a:active,.nav-links a:hover{background:rgba(255,255,255,.14)!important;color:#fff!important;}
+  .nav-links a::after{display:none!important;}
+
+  /* Give the whole site breathing room below the fixed header */
+  .page-content{width:100%!important;min-height:0!important;padding-top:0!important;}
+  .hero,.page-heading,.show-detail-section{padding-top:116px!important;}
+  .hero{padding-left:20px!important;padding-right:20px!important;padding-bottom:70px!important;min-height:calc(100dvh - 76px)!important;}
+  .hero-content{width:100%!important;max-width:none!important;}
+  .badge{font-size:11px!important;letter-spacing:1.4px!important;padding:9px 12px!important;line-height:1.35!important;}
+  .hero h1{font-size:clamp(58px,17vw,82px)!important;line-height:.84!important;letter-spacing:-3px!important;margin:22px 0!important;}
+  .hero p{font-size:18px!important;line-height:1.6!important;max-width:100%!important;}
+  .hero-buttons{display:flex!important;flex-direction:column!important;width:100%!important;gap:12px!important;margin-top:26px!important;}
+  .btn{width:100%!important;min-height:54px!important;padding:16px 20px!important;font-size:16px!important;}
+  .hero-logo{width:min(72vw,300px)!important;margin:35px auto 0!important;}
+
+  /* Internal pages */
+  .page-heading{padding-left:20px!important;padding-right:20px!important;padding-bottom:38px!important;}
+  .page-heading h1,.page-heading .section-title{font-size:clamp(42px,12vw,62px)!important;line-height:.95!important;letter-spacing:-2px!important;}
+  .page-heading p{font-size:17px!important;line-height:1.55!important;}
+  main section{max-width:100%!important;}
+  .container,.section-inner,.content-wrap{width:100%!important;max-width:none!important;padding-left:20px!important;padding-right:20px!important;}
+
+  /* Cards/grids become comfortable one-column touch layouts */
+  .grid,.cards,.shows-grid,.music-grid,.stats-grid,.production-grid,.show-grid{grid-template-columns:1fr!important;gap:16px!important;}
+  .card,.show,.music-card,.stat,.production-card{padding:22px!important;border-radius:18px!important;}
+  .card h2,.card h3,.show h3,.music-card h3,.production-card h3{font-size:22px!important;line-height:1.15!important;}
+  .card p,.show p,.music-card p,.production-card p,.stat-label{font-size:16px!important;line-height:1.55!important;}
+  .stat-number{font-size:38px!important;line-height:1!important;}
+  .show-date{font-size:16px!important;font-weight:900!important;}
+  .role{font-size:14px!important;}
+
+  /* Enzo / visual blocks */
+  .enzo-logo{font-size:clamp(42px,13vw,68px)!important;line-height:.9!important;}
+  img{max-width:100%;height:auto;}
+  iframe,video{max-width:100%!important;}
+
+  footer{padding:32px 20px!important;display:flex!important;flex-direction:column!important;gap:14px!important;font-size:13px!important;}
+  .guide-launcher{width:58px!important;height:58px!important;right:16px!important;bottom:16px!important;z-index:8000!important;}
+  .guide-panel{left:14px!important;right:14px!important;width:auto!important;max-width:none!important;bottom:86px!important;max-height:70dvh!important;overflow:auto!important;z-index:8001!important;}
+
+  /* Never let decorative layers create a white/blank screen */
+  .intro-screen{z-index:90000!important;}
+  .intro-screen.hide{pointer-events:none!important;visibility:hidden!important;opacity:0!important;}
+  body::after{right:8px!important;bottom:10px!important;font-size:7px!important;}
+}
+
+@media (max-width:390px){
+  nav{padding-left:12px!important;padding-right:12px!important;}
+  .logo-img{width:142px!important;}
+  .mobile-menu-btn{width:48px!important;height:48px!important;flex-basis:48px!important;}
+  .hero,.page-heading,.show-detail-section{padding-left:16px!important;padding-right:16px!important;}
+  .hero h1{font-size:58px!important;}
+}
+
+@media (min-width:851px){
+  .mobile-menu-btn,.mobile-menu-overlay{display:none!important;}
+}
+
 </style>
 </head>
 <body data-page="enzo">
