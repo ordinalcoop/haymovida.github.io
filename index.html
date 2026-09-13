@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio — HAYMOVIDA</title>
+<meta name="description" content="HAYMOVIDA — Sello discográfico independiente de Uruguay.">
+<style>
+
+/* =====================================================
+   HAYMOVIDA — IDENTIDAD
+===================================================== */
+
+:root {
+    --blue: #0121CE;
+    --blue2: #0121CE;
+    --electric: #0121CE;
+
+    --bg: #05070c;
+    --bg2: #080c14;
+    --surface: #0c111c;
+
+    --card: rgba(255,255,255,.045);
+    --card-hover: rgba(255,255,255,.075);
+
+    --text: #f5f7fb;
+    --muted: #8994a8;
+
+    --border: rgba(255,255,255,.10);
+
+    --radius: 18px;
+}
+
+body.light {
+    --bg: #f3f6fb;
+    --bg2: #ffffff;
+    --surface: #eaf0f8;
+
+    --card: rgba(0,0,0,.045);
+    --card-hover: rgba(0,0,0,.075);
+
+    --text: #101521;
+    --muted: #0121CE;
+    --border: rgba(0,0,0,.10);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            rgba(23,105,255,.16),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 0% 35%,
+            rgba(23,105,255,.08),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    overflow-x: hidden;
+
+    transition:
+        background .4s ease,
+        color .4s ease;
+}
+
+
+/* =====================================================
+   TEXTURA DE FONDO
+===================================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: -2;
+
+    opacity: .035;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+}
+
+
+/* =====================================================
+   CURSOR GLOW
+===================================================== */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background: rgba(23,105,255,.08);
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: -1;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(5,7,12,.72);
+
+    backdrop-filter: blur(22px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+body.light nav {
+    background: rgba(255,255,255,.78);
+}
+
+
+/* =====================================================
+   LOGO HEADER
+===================================================== */
+
+.logo-img {
+
+    width: 175px;
+    height: 55px;
+
+    object-fit: contain;
+    object-position: left center;
+
+    display: block;
+
+    transition:
+        transform .3s ease,
+        filter .3s ease;
+}
+
+.logo-img:hover {
+
+    transform: scale(1.04);
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(23,105,255,.30)
+        );
+}
+
+
+/* =====================================================
+   NAV LINKS
+===================================================== */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 29px;
+
+    list-style: none;
+}
+
+.nav-links a {
+
+    position: relative;
+
+    text-decoration: none;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--blue);
+
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+.theme-btn {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: .3s;
+}
+
+.theme-btn:hover {
+
+    border-color: var(--blue);
+
+    transform: rotate(15deg);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        140px 8%
+        90px;
+
+    overflow: hidden;
+}
+
+
+/* TEXTO GIGANTE DE FONDO */
+
+.hero::before {
+
+    content: "HAYMOVIDA";
+
+    position: absolute;
+
+    right: -70px;
+    bottom: -70px;
+
+    font-size: 180px;
+
+    font-weight: 950;
+
+    letter-spacing: -12px;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(23,105,255,.09);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+
+    position: relative;
+
+    max-width: 760px;
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 50px;
+
+    background: rgba(23,105,255,.09);
+
+    border:
+        1px solid rgba(23,105,255,.30);
+
+    color: #0121CE;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 28px;
+}
+
+.badge::before {
+
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    background: var(--blue);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   TITULO
+===================================================== */
+
+.hero h1 {
+
+    font-size:
+        clamp(70px, 13vw, 175px);
+
+    line-height: .77;
+
+    letter-spacing: -11px;
+
+    font-weight: 950;
+
+    text-transform: uppercase;
+}
+
+.hero h1 span {
+
+    color: var(--blue);
+
+    text-shadow:
+        0 0 70px rgba(23,105,255,.18);
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
+
+.hero p {
+
+    max-width: 620px;
+
+    margin-top: 42px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 34px;
+}
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 21px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: .3s;
+}
+
+.btn-primary {
+
+    background: var(--blue);
+
+    color: white;
+
+    box-shadow:
+        0 12px 35px rgba(23,105,255,.22);
+}
+
+.btn-primary:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 45px rgba(23,105,255,.35);
+}
+
+.btn-secondary {
+
+    color: var(--text);
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+}
+
+.btn-secondary:hover {
+
+    border-color: var(--blue);
+
+    transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   LOGO ANIMADO DEL HERO
+===================================================== */
+
+.hero-logo {
+
+    position: absolute;
+
+    right: 7%;
+
+    top: 50%;
+
+    width: 430px;
+    height: 430px;
+
+    transform:
+        translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+
+    animation:
+        heroLogoFloat 5s ease-in-out infinite;
+}
+
+
+/* Aro exterior */
+
+.hero-logo::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(23,105,255,.20);
+
+    box-shadow:
+        0 0 80px
+        rgba(23,105,255,.06);
+
+    animation:
+        logoRing 12s linear infinite;
+}
+
+
+/* Segundo aro */
+
+.hero-logo::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 315px;
+    height: 315px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(77,141,255,.22);
+
+    animation:
+        logoRingReverse 18s linear infinite;
+}
+
+
+/* Imagen */
+
+.hero-logo img {
+
+    position: relative;
+
+    width: 310px;
+    height: auto;
+
+    object-fit: contain;
+
+    z-index: 5;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(23,105,255,.25)
+        );
+
+    animation:
+        logoPulse 4s ease-in-out infinite;
+}
+
+
+/* Punto orbitando */
+
+.hero-logo .orbit-dot {
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 20px var(--blue),
+        0 0 45px rgba(23,105,255,.7);
+
+    animation:
+        dotOrbit 6s linear infinite;
+
+    z-index: 8;
+}
+
+
+/* Animaciones */
+
+@keyframes heroLogoFloat {
+
+    0%, 100% {
+        transform:
+            translateY(-50%);
+    }
+
+    50% {
+        transform:
+            translateY(calc(-50% - 13px));
+    }
+}
+
+
+@keyframes logoRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes logoRingReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes logoPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        filter:
+            drop-shadow(
+                0 0 25px
+                rgba(23,105,255,.22)
+            );
+    }
+
+    50% {
+        transform: scale(1.035);
+        filter:
+            drop-shadow(
+                0 0 42px
+                rgba(23,105,255,.42)
+            );
+    }
+}
+
+
+@keyframes dotOrbit {
+
+    from {
+        transform:
+            rotate(0deg)
+            translateX(190px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            translateX(190px)
+            rotate(-360deg);
+    }
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section {
+
+    position: relative;
+
+    padding:
+        120px 8%;
+}
+
+.section-label {
+
+    color: var(--blue);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.section-title {
+
+    max-width: 850px;
+
+    font-size:
+        clamp(38px, 5.5vw, 72px);
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+    font-weight: 950;
+
+    margin-bottom: 24px;
+}
+
+.section-description {
+
+    max-width: 650px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   SELLO
+===================================================== */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+.about-text {
+
+    color: var(--muted);
+
+    line-height: 1.95;
+
+    font-size: 16px;
+
+    max-width: 720px;
+}
+
+.about-text strong {
+    color: var(--text);
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.stat {
+
+    position: relative;
+
+    padding: 28px;
+
+    min-height: 135px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--card);
+
+    overflow: hidden;
+
+    transition: .35s;
+}
+
+.stat::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 0;
+
+    background: var(--blue);
+
+    transition: .35s;
+}
+
+.stat:hover {
+
+    transform: translateY(-5px);
+
+    background: var(--card-hover);
+}
+
+.stat:hover::before {
+    height: 100%;
+}
+
+.stat-number {
+
+    color: var(--blue);
+
+    font-size: 34px;
+
+    font-weight: 950;
+
+    letter-spacing: -2px;
+}
+
+.stat-label {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   ENZO
+===================================================== */
+
+.enzo {
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(23,105,255,.055),
+            transparent 60%
+        );
+}
+
+.enzo-card {
+
+    max-width: 1100px;
+
+    margin-top: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        .75fr 1.25fr;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 22px;
+
+    background: var(--card);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.22);
+}
+
+
+/* =====================================================
+   ENZO VISUAL
+===================================================== */
+
+.enzo-visual {
+
+    min-height: 450px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(23,105,255,.40),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            145deg,
+            #0a0f1b,
+            #030509
+        );
+}
+
+.enzo-visual::before {
+
+    content: "EL";
+
+    position: absolute;
+
+    font-size: 250px;
+
+    font-weight: 950;
+
+    letter-spacing: -25px;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.035);
+}
+
+.enzo-logo {
+
+    position: relative;
+
+    font-size: 65px;
+
+    font-weight: 950;
+
+    letter-spacing: -6px;
+
+    z-index: 2;
+}
+
+.enzo-logo span {
+    color: var(--blue);
+}
+
+
+/* =====================================================
+   ENZO INFO
+===================================================== */
+
+.enzo-info {
+
+    padding: 55px;
+}
+
+.enzo-info h3 {
+
+    font-size: 38px;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 7px;
+}
+
+.role {
+
+    color: var(--blue);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 28px;
+}
+
+.enzo-info p {
+
+    color: var(--muted);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   PRODUCCIONES
+===================================================== */
+
+.music-grid {
+
+    margin-top: 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 17px;
+}
+
+.music-card {
+
+    position: relative;
+
+    padding: 15px 15px 22px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 17px;
+
+    background: var(--card);
+
+    overflow: hidden;
+
+    transition:
+        transform .35s,
+        border-color .35s,
+        background .35s;
+}
+
+.music-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(23,105,255,.45);
+
+    background: var(--card-hover);
+}
+
+
+/* =====================================================
+   MUSIC COVER
+===================================================== */
+
+.music-cover {
+
+    position: relative;
+
+    height: 210px;
+
+    margin-bottom: 20px;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(77,141,255,.9),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0121CE,
+            #050913 75%
+        );
+
+    font-size: 18px;
+
+    font-weight: 950;
+
+    letter-spacing: -1px;
+}
+
+.music-cover::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        repeating-linear-gradient(
+            135deg,
+            transparent 0px,
+            transparent 9px,
+            rgba(255,255,255,.035) 10px,
+            transparent 11px
+        );
+}
+
+.music-card h3 {
+
+    font-size: 17px;
+
+    letter-spacing: -.4px;
+}
+
+.music-card p {
+
+    color: var(--muted);
+
+    margin-top: 6px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   PLAY
+===================================================== */
+
+.play {
+
+    position: absolute;
+
+    right: 22px;
+    bottom: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: var(--blue);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.play:hover {
+
+    transform: scale(1.1);
+
+    box-shadow:
+        0 0 25px rgba(23,105,255,.4);
+}
+
+
+/* =====================================================
+   SHOWS
+===================================================== */
+
+.shows {
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg2),
+            var(--bg)
+        );
+}
+
+.show-list {
+
+    margin-top: 50px;
+
+    display: grid;
+
+    gap: 13px;
+}
+
+.show {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: var(--card);
+
+    transition: .3s;
+
+    overflow: hidden;
+}
+
+.show::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: var(--blue);
+
+    opacity: 0;
+
+    transition: .3s;
+}
+
+.show:hover {
+
+    transform: translateX(7px);
+
+    border-color:
+        rgba(23,105,255,.4);
+}
+
+.show:hover::before {
+    opacity: 1;
+}
+
+.show-date {
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 950;
+
+    line-height: 1.5;
+
+    letter-spacing: 1px;
+}
+
+.show h3 {
+
+    font-size: 20px;
+
+    letter-spacing: -.5px;
+}
+
+.show p {
+
+    color: var(--muted);
+
+    margin-top: 7px;
+
+    font-size: 13px;
+}
+
+.show-tag {
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(23,105,255,.11);
+
+    color: #0121CE;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+.contact-box {
+
+    position: relative;
+
+    margin-top: 50px;
+
+    padding: 70px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(23,105,255,.28),
+            transparent 35%
+        ),
+
+        var(--card);
+}
+
+.contact-box::after {
+
+    content: "HAY";
+
+    position: absolute;
+
+    right: -25px;
+    bottom: -80px;
+
+    font-size: 210px;
+
+    font-weight: 950;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(23,105,255,.08);
+
+    pointer-events: none;
+}
+
+.contact-items {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.contact-item {
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    border:
+        1px solid var(--border);
+
+    padding: 14px 18px;
+
+    border-radius: 9px;
+
+    background: rgba(0,0,0,.08);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.contact-item:hover {
+
+    border-color: var(--blue);
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(23,105,255,.08);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    padding:
+        45px 8%;
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--text);
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 1100px) {
+
+    .hero-logo {
+
+        right: -70px;
+
+        opacity: .30;
+
+    }
+
+}
+
+
+@media(max-width: 850px) {
+
+    nav {
+
+        padding: 0 5%;
+
+    }
+
+    .logo-img {
+
+        width: 150px;
+        height: 50px;
+
+    }
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .hero {
+
+        padding:
+            130px 7%
+            80px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 78px;
+
+        letter-spacing:
+            -6px;
+
+    }
+
+    .hero p {
+
+        font-size: 15px;
+
+    }
+
+
+    /* LOGO HERO MOBILE */
+
+    .hero-logo {
+
+        right: -150px;
+
+        width: 380px;
+        height: 380px;
+
+        opacity: .22;
+
+    }
+
+    .hero-logo::before {
+
+        width: 330px;
+        height: 330px;
+
+    }
+
+    .hero-logo::after {
+
+        width: 275px;
+        height: 275px;
+
+    }
+
+    .hero-logo img {
+
+        width: 270px;
+
+    }
+
+
+    .hero::before {
+
+        font-size: 80px;
+
+        right: -10px;
+
+    }
+
+    section {
+
+        padding:
+            85px 7%;
+
+    }
+
+    .about-grid,
+    .enzo-card {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .music-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .enzo-visual {
+
+        min-height: 300px;
+
+    }
+
+    .enzo-info {
+
+        padding:
+            35px 25px;
+
+    }
+
+    .show {
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+    }
+
+    .show-tag {
+
+        width: fit-content;
+
+    }
+
+    .contact-box {
+
+        padding:
+            40px 25px;
+
+    }
+
+    footer {
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+@media(max-width: 450px) {
+
+    .hero h1 {
+
+        font-size: 65px;
+
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .btn {
+
+        text-align: center;
+
+    }
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* =====================================================
+   HAYMOVIDA — EXPERIENCE LAYER
+   Intro / Assistant / Identity system
+===================================================== */
+
+/* Intro screen */
+.intro-screen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(1,33,206,.22), transparent 28%),
+        #02030a;
+    transition:opacity .9s cubic-bezier(.22,1,.36,1), visibility .9s;
+}
+.intro-screen::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:42px 42px;
+    transform:perspective(600px) rotateX(58deg) translateY(12%);
+    transform-origin:center bottom;
+    opacity:.45;
+}
+.intro-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+.intro-core{
+    position:relative;
+    z-index:2;
+    width:min(62vw,420px);
+    aspect-ratio:1;
+    display:grid;
+    place-items:center;
+}
+.intro-core::before,
+.intro-core::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(1,33,206,.45);
+}
+.intro-core::before{
+    width:88%;
+    height:88%;
+    box-shadow:0 0 100px rgba(1,33,206,.18);
+    animation:introRing 2.8s ease-out forwards;
+}
+.intro-core::after{
+    width:68%;
+    height:68%;
+    border-style:dashed;
+    opacity:.65;
+    animation:introSpin 7s linear infinite;
+}
+.intro-logo{
+    width:55%;
+    max-width:235px;
+    filter:drop-shadow(0 0 25px rgba(1,33,206,.42));
+    animation:introLogo 1.65s cubic-bezier(.16,1,.3,1) forwards;
+}
+.intro-wordmark{
+    position:absolute;
+    bottom:-48px;
+    font-size:10px;
+    letter-spacing:5px;
+    font-weight:800;
+    color:rgba(255,255,255,.58);
+    text-transform:uppercase;
+    animation:introText 1s .7s both;
+}
+.intro-scan{
+    position:absolute;
+    left:0;
+    right:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#0121CE,transparent);
+    opacity:.55;
+    animation:scan 1.9s ease-in-out infinite;
+}
+@keyframes introLogo{
+    0%{opacity:0;transform:scale(.48) rotate(-8deg);filter:blur(10px) drop-shadow(0 0 0 transparent)}
+    55%{opacity:1;transform:scale(1.08) rotate(2deg);filter:blur(0) drop-shadow(0 0 34px rgba(1,33,206,.55))}
+    100%{opacity:1;transform:scale(1) rotate(0);filter:blur(0) drop-shadow(0 0 25px rgba(1,33,206,.42))}
+}
+@keyframes introRing{0%{transform:scale(.35);opacity:0}45%{opacity:1}100%{transform:scale(1.12);opacity:.45}}
+@keyframes introSpin{to{transform:rotate(360deg)}}
+@keyframes introText{from{opacity:0;letter-spacing:12px;transform:translateY(8px)}to{opacity:1;letter-spacing:5px;transform:none}}
+@keyframes scan{0%,100%{top:18%;opacity:0}50%{top:82%;opacity:.7}}
+
+/* Page reveal */
+.page-shell{
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 1s .25s ease, transform 1s .25s ease;
+}
+.page-shell.ready{opacity:1;transform:none}
+
+/* More distinct visual identity */
+body{
+    background:
+        radial-gradient(circle at 80% 8%, rgba(1,33,206,.18), transparent 25%),
+        radial-gradient(circle at 8% 55%, rgba(1,33,206,.08), transparent 23%),
+        var(--bg);
+}
+::selection{background:var(--blue);color:#fff}
+body::after{
+    content:"HAYMOVIDA / UY";
+    position:fixed;
+    right:18px;
+    bottom:14px;
+    z-index:20;
+    font:800 8px/1 Arial, sans-serif;
+    letter-spacing:2px;
+    color:rgba(255,255,255,.22);
+    pointer-events:none;
+    writing-mode:vertical-rl;
+}
+.nav-links a::after{background:var(--blue);box-shadow:0 0 12px rgba(1,33,206,.65)}
+.btn-primary{background:var(--blue);box-shadow:0 12px 35px rgba(1,33,206,.28)}
+.btn-primary:hover{box-shadow:0 18px 48px rgba(1,33,206,.42)}
+.badge{background:rgba(1,33,206,.11);border-color:rgba(1,33,206,.38);color:#0121CE}
+.badge::before{background:var(--blue);box-shadow:0 0 14px var(--blue)}
+.hero h1 span{color:var(--blue);text-shadow:0 0 70px rgba(1,33,206,.26)}
+.section-label,.stat-number,.show-date,.role{color:var(--blue)}
+.music-card:hover,.show:hover{border-color:rgba(1,33,206,.52)}
+.music-cover{background:
+    radial-gradient(circle at 70% 20%, rgba(49,82,255,.9), transparent 35%),
+    linear-gradient(135deg,#0121CE,#050913 75%)}
+.play{background:var(--blue)}
+.contact-box{background:
+    radial-gradient(circle at 90% 20%, rgba(1,33,206,.34), transparent 35%),
+    var(--card)}
+.contact-item:hover{border-color:var(--blue);background:rgba(1,33,206,.10)}
+
+/* Assistant */
+.guide-launcher{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:1200;
+    width:58px;
+    height:58px;
+    border:1px solid rgba(49,82,255,.6);
+    border-radius:18px;
+    background:rgba(4,7,17,.88);
+    color:#fff;
+    cursor:pointer;
+    box-shadow:0 12px 40px rgba(0,0,0,.35),0 0 30px rgba(1,33,206,.18);
+    backdrop-filter:blur(18px);
+    display:grid;
+    place-items:center;
+    transition:.3s;
+}
+.guide-launcher:hover{transform:translateY(-4px) scale(1.04);border-color:#0121CE}
+.guide-launcher svg{width:25px;height:25px}
+.guide-ping{
+    position:absolute;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:#0121CE;
+    top:6px;right:6px;
+    box-shadow:0 0 14px #0121CE;
+}
+.guide-panel{
+    position:fixed;
+    right:24px;
+    bottom:94px;
+    z-index:1199;
+    width:min(360px,calc(100vw - 32px));
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    background:rgba(7,10,18,.92);
+    box-shadow:0 25px 80px rgba(0,0,0,.48),0 0 45px rgba(1,33,206,.12);
+    backdrop-filter:blur(24px);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px) scale(.97);
+    pointer-events:none;
+    transition:.35s cubic-bezier(.22,1,.36,1);
+}
+.guide-panel.open{opacity:1;transform:none;pointer-events:auto}
+.guide-head{
+    padding:18px 18px 15px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+.guide-brand{display:flex;align-items:center;gap:11px}
+.guide-mark{
+    width:34px;height:34px;border-radius:10px;
+    display:grid;place-items:center;
+    background:var(--blue);
+    box-shadow:0 0 24px rgba(1,33,206,.35);
+}
+.guide-brand strong{font-size:13px}
+.guide-brand span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.guide-close{
+    width:30px;height:30px;border:1px solid var(--border);
+    background:transparent;color:var(--muted);border-radius:9px;cursor:pointer;
+}
+.guide-body{padding:18px}
+.guide-message{
+    color:#dfe4ef;font-size:13px;line-height:1.7;margin-bottom:15px;
+}
+.guide-message b{color:#fff}
+.guide-actions{display:grid;gap:8px}
+.guide-action{
+    text-align:left;padding:12px 13px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
+    color:var(--text);border-radius:12px;cursor:pointer;
+    transition:.25s;font-size:11px;font-weight:800;
+    display:flex;align-items:center;justify-content:space-between;
+}
+.guide-action:hover{border-color:rgba(49,82,255,.55);background:rgba(1,33,206,.10);transform:translateX(3px)}
+.guide-action small{color:var(--muted);font-weight:600}
+.guide-progress{
+    margin-top:15px;
+    height:3px;border-radius:10px;background:rgba(255,255,255,.07);overflow:hidden;
+}
+.guide-progress span{
+    display:block;height:100%;width:0;background:var(--blue);
+    box-shadow:0 0 12px rgba(1,33,206,.7);transition:.35s;
+}
+@media(max-width:600px){
+    .guide-panel{right:16px;bottom:88px}
+    .guide-launcher{right:16px;bottom:16px}
+}
+
+
+/* --- SIMPLE 1-SECOND INTRO --- */
+.intro-screen{
+    background:#02040c;
+    transition:opacity .32s ease, visibility .32s ease;
+}
+.intro-screen::before,.intro-screen::after,.intro-scan,.intro-wordmark{display:none!important}
+.intro-core{width:min(52vw,250px);height:min(52vw,250px);}
+.intro-core::before,.intro-core::after{display:none}
+.intro-logo{
+    width:72%;
+    max-width:180px;
+    animation:introSimple .72s cubic-bezier(.22,1,.36,1) both;
+    filter:none;
+}
+@keyframes introSimple{
+    0%{opacity:0;transform:scale(.82)}
+    65%{opacity:1;transform:scale(1.04)}
+    100%{opacity:1;transform:scale(1)}
+}
+.page-shell{
+    opacity:0;
+    transform:none;
+    transition:opacity .55s ease;
+}
+.page-shell.ready{opacity:1}
+/* Elegant content entrance */
+.hero .reveal{transition-delay:var(--delay,0s)}
+
+
+/* =====================================================
+   HAYMOVIDA — CLEAN IDENTITY OVERRIDES
+===================================================== */
+:root{
+  --blue:#0121CE;
+  --blue2:#0121CE;
+  --electric:#0121CE;
+  --bg:#F4F7FC;
+  --bg2:#FFFFFF;
+  --surface:#EAF0FA;
+  --card:rgba(255,255,255,.82);
+  --card-hover:#FFFFFF;
+  --text:#10182A;
+  --muted:#647089;
+  --border:rgba(9,29,78,.12);
+}
+body.light{
+  --bg:#F4F7FC;
+  --bg2:#FFFFFF;
+  --surface:#EAF0FA;
+  --card:rgba(255,255,255,.88);
+  --card-hover:#FFFFFF;
+  --text:#10182A;
+  --muted:#647089;
+  --border:rgba(9,29,78,.12);
+}
+body:not(.light){
+  --bg:#101522;
+  --bg2:#151B2A;
+  --surface:#1B2435;
+  --card:rgba(255,255,255,.055);
+  --card-hover:rgba(255,255,255,.085);
+  --text:#F4F7FC;
+  --muted:#9BA7BA;
+  --border:rgba(255,255,255,.11);
+}
+body{
+  background:
+    radial-gradient(circle at 92% 3%,rgba(1,33,206,.12),transparent 24%),
+    radial-gradient(circle at 4% 48%,rgba(49,82,255,.055),transparent 22%),
+    var(--bg);
+}
+body::before{display:none!important}
+body::after{display:none!important}
+.cursor-glow{
+  width:280px;height:280px;
+  background:rgba(1,33,206,.055);
+  filter:blur(90px);
+  z-index:-1;
+}
+nav{
+  background:rgba(255,255,255,.84);
+  border-bottom:1px solid rgba(9,29,78,.09);
+  box-shadow:0 4px 24px rgba(16,24,42,.035);
+}
+body:not(.light) nav{background:rgba(16,21,34,.86);border-bottom-color:var(--border)}
+.nav-links a{color:var(--text)}
+.nav-links a::after{background:var(--blue);box-shadow:none}
+.logo-img{filter:drop-shadow(0 4px 12px rgba(1,33,206,.10))}
+.hero h1 span{color:var(--blue);text-shadow:none}
+.section-label,.stat-number,.show-date,.role{color:var(--blue)}
+.badge{background:rgba(1,33,206,.07);border-color:rgba(1,33,206,.22);color:var(--blue)}
+.badge::before{background:var(--blue);box-shadow:none}
+.btn-primary{background:var(--blue);box-shadow:0 10px 26px rgba(1,33,206,.18)}
+.btn-primary:hover{box-shadow:0 14px 34px rgba(1,33,206,.26)}
+.music-card,.show,.contact-item{box-shadow:0 8px 30px rgba(16,24,42,.035)}
+.music-card:hover,.show:hover{border-color:rgba(1,33,206,.30);box-shadow:0 18px 45px rgba(16,24,42,.08)}
+.music-cover{background:linear-gradient(135deg,#0121CE,#0121CE 55%,#06113F)}
+.play{background:var(--blue);box-shadow:0 7px 18px rgba(1,33,206,.24)}
+.contact-box{background:linear-gradient(135deg,rgba(1,33,206,.08),rgba(255,255,255,.7)),var(--card);box-shadow:0 20px 60px rgba(16,24,42,.06)}
+.contact-item:hover{border-color:rgba(1,33,206,.30);background:rgba(1,33,206,.055)}
+
+/* Simple, elegant 1-second entrance */
+.intro-screen{
+  position:fixed!important;inset:0!important;z-index:99999!important;
+  display:grid!important;place-items:center!important;
+  background:#0121CE!important;
+  opacity:1;
+  visibility:visible;
+  transition:opacity .28s ease,visibility .28s ease;
+}
+.intro-screen::before,.intro-screen::after,.intro-scan,.intro-wordmark{display:none!important}
+.intro-screen.hide{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.intro-core{width:170px!important;height:170px!important;display:grid!important;place-items:center!important}
+.intro-core::before,.intro-core::after{display:none!important}
+.intro-logo{
+  width:132px!important;height:132px!important;object-fit:contain!important;
+  filter:drop-shadow(0 10px 25px rgba(0,0,0,.14))!important;
+  animation:logoEntrance .62s cubic-bezier(.22,1,.36,1) both!important;
+}
+@keyframes logoEntrance{0%{opacity:0;transform:scale(.82)}65%{opacity:1;transform:scale(1.035)}100%{opacity:1;transform:scale(1)}}
+/* The site itself is always present underneath the intro: no freeze if JS is slow. */
+.page-shell{opacity:1!important;transform:none!important;transition:none!important}
+
+/* Elegant scroll reveals */
+.reveal{opacity:0;transform:translateY(22px);filter:blur(2px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1),filter .72s ease}
+.reveal.active{opacity:1;transform:none;filter:none}
+.hero .reveal{transition-delay:var(--delay,0s)}
+
+/* Assistant — clean and unobtrusive */
+.guide-launcher{
+  position:fixed;right:22px;bottom:22px;z-index:1200;width:54px;height:54px;
+  border:1px solid rgba(1,33,206,.22);border-radius:16px;background:#fff;color:var(--blue);
+  cursor:pointer;box-shadow:0 10px 30px rgba(16,24,42,.12);backdrop-filter:blur(14px);
+  display:grid;place-items:center;transition:.25s ease;
+}
+.guide-launcher:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(16,24,42,.16)}
+.guide-ping{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--blue);top:7px;right:7px;box-shadow:0 0 10px rgba(1,33,206,.45)}
+.guide-panel{position:fixed;right:22px;bottom:88px;z-index:1199;width:min(350px,calc(100vw - 28px));border:1px solid rgba(9,29,78,.12);border-radius:20px;background:rgba(255,255,255,.96);color:#10182A;box-shadow:0 22px 65px rgba(16,24,42,.18);backdrop-filter:blur(20px);overflow:hidden;opacity:0;transform:translateY(12px) scale(.98);pointer-events:none;transition:.28s ease}
+.guide-panel.open{opacity:1;transform:none;pointer-events:auto}
+.guide-head{padding:16px 17px;border-bottom:1px solid rgba(9,29,78,.09)}
+.guide-brand strong{color:#10182A}
+.guide-brand span{color:#718097}
+.guide-mark{background:var(--blue);box-shadow:none}
+.guide-close{color:#718097;border-color:rgba(9,29,78,.12)}
+.guide-message{color:#536078}
+.guide-message b{color:#10182A}
+.guide-action{color:#172033;border-color:rgba(9,29,78,.10);background:#F7F9FD}
+.guide-action:hover{border-color:rgba(1,33,206,.30);background:rgba(1,33,206,.055);transform:translateX(2px)}
+.guide-action small{color:#8792A6}
+.guide-progress{background:#E5EAF2}
+.guide-progress span{background:var(--blue);box-shadow:none}
+body:not(.light) .guide-launcher{background:#151B2A;color:#fff;border-color:rgba(255,255,255,.12)}
+body:not(.light) .guide-panel{background:rgba(21,27,42,.97);color:#F4F7FC;border-color:var(--border)}
+body:not(.light) .guide-brand strong,body:not(.light) .guide-message b{color:#fff}
+body:not(.light) .guide-brand span,body:not(.light) .guide-message{color:#9BA7BA}
+body:not(.light) .guide-action{color:#F4F7FC;background:rgba(255,255,255,.045);border-color:var(--border)}
+body:not(.light) .guide-close{color:#9BA7BA;border-color:var(--border)}
+body:not(.light) .guide-progress{background:rgba(255,255,255,.08)}
+@media(max-width:600px){.guide-panel{right:14px;bottom:82px}.guide-launcher{right:14px;bottom:14px}}
+
+
+/* =====================================================
+   HAYMOVIDA — BLUE & WHITE IDENTITY
+   Fondo principal inspirado directamente en el azul
+   predominante del logo de referencia.
+===================================================== */
+:root{
+  --blue:#0122CF;
+  --blue2:#0122CF;
+  --electric:#0122CF;
+  --bg:#0122CF;
+  --bg2:#0122CF;
+  --surface:#0122CF;
+  --card:#FFFFFF;
+  --card-hover:#F4F7FF;
+  --text:#FFFFFF;
+  --muted:rgba(255,255,255,.82);
+  --border:rgba(255,255,255,.25);
+}
+
+/* La página queda permanentemente en azul: no existe tema oscuro/claro. */
+html,body{
+  background:#0122CF !important;
+  color:#FFFFFF !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 85% 5%, rgba(255,255,255,.08), transparent 25%),
+    radial-gradient(circle at 5% 55%, rgba(255,255,255,.055), transparent 22%),
+    #0122CF !important;
+}
+
+body::before,
+body::after{
+  display:none !important;
+}
+
+nav{
+  background:rgba(1,34,207,.92) !important;
+  border-bottom:1px solid rgba(255,255,255,.20) !important;
+  box-shadow:0 8px 30px rgba(0,0,0,.10) !important;
+}
+
+.nav-links a{
+  color:#FFFFFF !important;
+}
+.nav-links a:hover{
+  color:#FFFFFF !important;
+}
+.nav-links a::after{
+  background:#FFFFFF !important;
+  box-shadow:none !important;
+}
+
+.logo-img{
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.12)) !important;
+}
+
+.hero{
+  background:#0122CF !important;
+}
+
+.hero::before{
+  -webkit-text-stroke:1px rgba(255,255,255,.12) !important;
+}
+
+.hero h1,
+.hero p{
+  color:#FFFFFF !important;
+}
+
+.hero h1 span{
+  color:#FFFFFF !important;
+  text-shadow:none !important;
+}
+
+.badge{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(255,255,255,.32) !important;
+  color:#FFFFFF !important;
+}
+.badge::before{
+  background:#FFFFFF !important;
+  box-shadow:0 0 12px rgba(255,255,255,.65) !important;
+}
+
+.btn-primary{
+  background:#FFFFFF !important;
+  color:#0122CF !important;
+  box-shadow:0 12px 35px rgba(0,0,0,.12) !important;
+}
+.btn-primary:hover{
+  box-shadow:0 18px 45px rgba(0,0,0,.18) !important;
+}
+
+.btn-secondary{
+  color:#FFFFFF !important;
+  background:rgba(255,255,255,.10) !important;
+  border-color:rgba(255,255,255,.30) !important;
+}
+.btn-secondary:hover{
+  border-color:#FFFFFF !important;
+  background:rgba(255,255,255,.16) !important;
+}
+
+.hero-logo::before{
+  border-color:rgba(255,255,255,.25) !important;
+  box-shadow:0 0 80px rgba(255,255,255,.06) !important;
+}
+.hero-logo::after{
+  border-color:rgba(255,255,255,.22) !important;
+}
+.hero-logo img{
+  filter:drop-shadow(0 0 25px rgba(0,0,0,.16)) !important;
+}
+.hero-logo .orbit-dot{
+  background:#FFFFFF !important;
+  box-shadow:0 0 20px rgba(255,255,255,.8),0 0 45px rgba(255,255,255,.35) !important;
+}
+
+section,
+.enzo,
+.shows{
+  background:#0122CF !important;
+}
+
+.section-label,
+.stat-number,
+.show-date,
+.role{
+  color:#FFFFFF !important;
+}
+
+.section-title,
+.about-text,
+.about-text strong{
+  color:#FFFFFF !important;
+}
+
+.section-description,
+.about-text,
+.enzo-info p,
+.show p,
+.music-card p{
+  color:rgba(255,255,255,.82) !important;
+}
+
+/* Tarjetas blancas para crear contraste sin convertir toda la página en blanco. */
+.stat,
+.music-card,
+.show,
+.enzo-card,
+.contact-box{
+  background:#FFFFFF !important;
+  border-color:rgba(1,34,207,.16) !important;
+  box-shadow:0 10px 35px rgba(0,0,0,.10) !important;
+  color:#0122CF !important;
+}
+
+.stat:hover,
+.music-card:hover,
+.show:hover{
+  background:#FFFFFF !important;
+  border-color:rgba(1,34,207,.35) !important;
+  box-shadow:0 18px 45px rgba(0,0,0,.15) !important;
+}
+
+.stat::before,
+.show::before{
+  background:#0122CF !important;
+}
+
+.stat-label,
+.music-card h3,
+.music-card p,
+.show h3,
+.show p{
+  color:#0122CF !important;
+}
+
+.music-cover{
+  background:
+    radial-gradient(circle at 70% 20%, rgba(255,255,255,.25), transparent 35%),
+    linear-gradient(135deg,#0122CF,#0122CF 70%,#001B9E) !important;
+}
+
+.music-card .play,
+.play{
+  background:#0122CF !important;
+  color:#FFFFFF !important;
+  box-shadow:0 7px 18px rgba(1,34,207,.24) !important;
+}
+
+.show-tag{
+  background:rgba(1,34,207,.09) !important;
+  color:#0122CF !important;
+}
+
+.enzo-visual{
+  background:#0122CF !important;
+}
+.enzo-visual::before{
+  -webkit-text-stroke:1px rgba(255,255,255,.10) !important;
+}
+.enzo-logo,
+.enzo-info h3{
+  color:#0122CF !important;
+}
+.enzo-logo span{
+  color:#0122CF !important;
+}
+
+.enzo-info{
+  background:#FFFFFF !important;
+}
+.enzo-info p{
+  color:#536078 !important;
+}
+
+.contact-box{
+  background:#FFFFFF !important;
+}
+.contact-box::after{
+  -webkit-text-stroke:1px rgba(1,34,207,.08) !important;
+}
+.contact-items .contact-item{
+  color:#0122CF !important;
+  background:#F5F7FF !important;
+  border-color:rgba(1,34,207,.15) !important;
+}
+.contact-items .contact-item:hover{
+  color:#0122CF !important;
+  border-color:#0122CF !important;
+  background:rgba(1,34,207,.08) !important;
+}
+
+footer{
+  background:#0122CF !important;
+  border-top-color:rgba(255,255,255,.20) !important;
+  color:rgba(255,255,255,.75) !important;
+}
+footer strong{
+  color:#FFFFFF !important;
+}
+
+/* Asistente */
+.guide-launcher{
+  background:#FFFFFF !important;
+  color:#0122CF !important;
+  border-color:rgba(1,34,207,.18) !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.16) !important;
+}
+.guide-ping{
+  background:#0122CF !important;
+  box-shadow:0 0 10px rgba(1,34,207,.45) !important;
+}
+.guide-panel{
+  background:#FFFFFF !important;
+  color:#0122CF !important;
+  border-color:rgba(1,34,207,.14) !important;
+}
+.guide-head{
+  border-bottom-color:rgba(1,34,207,.10) !important;
+}
+.guide-brand strong,
+.guide-message b{
+  color:#0122CF !important;
+}
+.guide-brand span,
+.guide-message{
+  color:#536078 !important;
+}
+.guide-mark{
+  background:#0122CF !important;
+}
+.guide-close{
+  color:#536078 !important;
+  border-color:rgba(1,34,207,.14) !important;
+}
+.guide-action{
+  color:#0122CF !important;
+  background:#F5F7FF !important;
+  border-color:rgba(1,34,207,.12) !important;
+}
+.guide-action:hover{
+  border-color:rgba(1,34,207,.35) !important;
+  background:rgba(1,34,207,.08) !important;
+}
+.guide-action small{
+  color:#718097 !important;
+}
+.guide-progress{
+  background:#E5EAF2 !important;
+}
+.guide-progress span{
+  background:#0122CF !important;
+  box-shadow:none !important;
+}
+
+/* Intro */
+.intro-screen{
+  background:#0122CF !important;
+}
+
+
+/* =====================================================
+   CONTACTO — TEXTO + FOTO DE ENZO
+===================================================== */
+.contact-box{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr) !important;
+  align-items:center !important;
+  gap:45px !important;
+  padding:55px !important;
+}
+
+.contact-content{
+  position:relative;
+  z-index:2;
+}
+
+/* Texto oscuro para que siempre se lea sobre la tarjeta blanca. */
+.contact-box .section-label{
+  color:#0122CF !important;
+}
+.contact-box .section-title{
+  color:#10182A !important;
+}
+.contact-box .section-description{
+  color:#536078 !important;
+}
+
+.contact-visual{
+  position:relative;
+  width:100%;
+  max-width:330px;
+  justify-self:end;
+  border-radius:18px;
+  overflow:hidden;
+  background:#0122CF;
+  box-shadow:0 16px 40px rgba(1,34,207,.16);
+}
+
+.contact-visual img{
+  display:block;
+  width:100%;
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  object-position:center;
+}
+
+.contact-visual-label{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  padding:8px 11px;
+  border-radius:8px;
+  background:rgba(255,255,255,.92);
+  color:#0122CF;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+@media(max-width:850px){
+  .contact-box{
+    grid-template-columns:1fr !important;
+    gap:30px !important;
+    padding:40px 25px !important;
+  }
+  .contact-visual{
+    justify-self:center;
+    width:min(100%,330px);
+  }
+}
+
+
+
+/* =====================================================
+   SHOW DETAILS / EVENT PAGES
+===================================================== */
+.show-clickable{
+    cursor:pointer;
+}
+.show-clickable:focus-visible{
+    outline:3px solid #FFFFFF;
+    outline-offset:4px;
+}
+.show-detail-section{
+    background:#FFFFFF !important;
+    padding-top:90px;
+    padding-bottom:110px;
+}
+.show-detail{
+    max-width:1050px;
+    margin:0 auto;
+}
+.show-back{
+    border:1px solid rgba(1,34,207,.18);
+    background:#F5F7FF;
+    color:#0122CF;
+    border-radius:10px;
+    padding:11px 16px;
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.25s ease;
+    margin-bottom:30px;
+}
+.show-back:hover{
+    background:#0122CF;
+    color:#FFFFFF;
+    transform:translateX(-3px);
+}
+.show-flyer{
+    width:min(100%,700px);
+    aspect-ratio:4/5;
+    margin:0 auto;
+    border:2px dashed rgba(1,34,207,.28);
+    border-radius:20px;
+    background:#F5F7FF;
+    color:#0122CF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    font-weight:950;
+    letter-spacing:4px;
+}
+.show-detail-info{
+    max-width:850px;
+    margin:55px auto 0;
+}
+.show-detail-info .section-label{
+    color:#0122CF !important;
+}
+.show-detail-info .section-title{
+    color:#10182A !important;
+    margin-bottom:12px;
+}
+.show-detail-date{
+    color:#0122CF;
+    font-size:15px;
+    font-weight:900;
+    margin-bottom:35px;
+}
+.show-artists{
+    border-top:1px solid rgba(1,34,207,.12);
+    padding-top:25px;
+}
+.show-artists h3{
+    color:#10182A;
+    font-size:18px;
+    margin-bottom:14px;
+}
+.show-artists p{
+    color:#536078;
+    font-size:15px;
+    line-height:1.9;
+}
+@media(max-width:700px){
+    .show-detail-section{padding-top:70px;padding-bottom:80px;}
+    .show-flyer{aspect-ratio:3/4;border-radius:15px;font-size:25px;}
+    .show-detail-info{margin-top:40px;}
+}
+
+
+/* =====================================================
+   CONTRASTE + NAVEGACIÓN MULTIPÁGINA
+===================================================== */
+.stat-number,
+.show-date,
+.role {
+  color:#0122CF !important;
+}
+.enzo-logo,
+.enzo-logo span {
+  color:#FFFFFF !important;
+}
+.stat-label,
+.show h3,
+.show p,
+.music-card h3,
+.music-card p {
+  color:#0122CF !important;
+}
+.nav-links a.active{
+  font-weight:950 !important;
+}
+.page-content{
+  min-height:calc(100vh - 150px);
+}
+.page-heading{
+  padding-top:145px;
+}
+@media(max-width:850px){
+  .page-heading{padding-top:120px;}
+}
+</style>
+</head>
+<body data-page="inicio">
+
+<div class="intro-screen" id="introScreen">
+  <div class="intro-core">
+    <img class="intro-logo" src="https://i.imgur.com/jnPKNYT.png" alt="HAYMOVIDA">
+  </div>
+</div>
+
+<div class="page-shell ready">
+<div class="cursor-glow" id="glow"></div>
+
+<nav>
+  <a href="index.html" aria-label="HAYMOVIDA — Inicio">
+    <img class="logo-img" src="https://i.imgur.com/jnPKNYT.png" alt="HAYMOVIDA">
+  </a>
+  <ul class="nav-links">
+    <li><a data-page="inicio" href="index.html">Inicio</a></li>
+    <li><a data-page="sello" href="sello.html">El sello</a></li>
+    <li><a data-page="enzo" href="enzo.html">Enzo Lagos</a></li>
+    <li><a data-page="producciones" href="producciones.html">Producciones</a></li>
+    <li><a data-page="shows" href="shows.html">Shows</a></li>
+    <li><a data-page="contacto" href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<main class="page-content">
+<section class="hero" id="inicio">
+<div class="hero-content reveal">
+<div class="badge">
+
+            SELLO INDEPENDIENTE
+            · URUGUAY
+            · 2025
+
+        </div>
+<h1>
+
+            HAY<br/>
+<span>MOVIDA.</span>
+</h1>
+<p>
+
+            Un espacio para artistas que tienen algo que decir.
+            Música, producción, cultura y comunidad se encuentran
+            para convertir el talento emergente en movimiento.
+
+        </p>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="producciones.html">
+
+                Explorar música
+
+            </a>
+<a class="btn btn-secondary" href="shows.html">
+
+                Ver shows
+
+            </a>
+</div>
+</div>
+<!-- =================================================
+         LOGO GRANDE ANIMADO
+    ================================================== -->
+<div class="hero-logo">
+<img alt="Logo HAYMOVIDA" src="https://i.imgur.com/jnPKNYT.png"/>
+<div class="orbit-dot"></div>
+</div>
+</section>
+</main>
+
+<footer>
+  <div>
+    <strong>HAYMOVIDA</strong><br>
+    Sello independiente · Uruguay
+  </div>
+  <div>© 2025 — HAYMOVIDA</div>
+</footer>
+
+
+<button class="guide-launcher" id="guideLauncher" aria-label="Abrir guía de HAYMOVIDA">
+  <span class="guide-ping"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+    <path d="M12 3.5a8.5 8.5 0 0 0-8.5 8.5c0 2.2.84 4.2 2.22 5.7L4 20.5l3.28-.95A8.5 8.5 0 1 0 12 3.5Z"/>
+    <path d="M8.5 10.5h7M8.5 14h4.5"/>
+  </svg>
+</button>
+<aside class="guide-panel" id="guidePanel" aria-label="Guía de HAYMOVIDA">
+  <div class="guide-head">
+    <div class="guide-brand">
+      <div class="guide-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+          <circle cx="12" cy="12" r="8.5"/>
+          <path d="M8 9.2c2.3 1.2 2.3 4.4 0 5.6M12 7.2v9.6M16 9.2c-2.3 1.2-2.3 4.4 0 5.6"/>
+        </svg>
+      </div>
+      <div><strong>Guía HAYMOVIDA</strong><span>Te acompaño por el sitio</span></div>
+    </div>
+    <button class="guide-close" id="guideClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="guide-body">
+    <div class="guide-message" id="guideMessage">
+      <b>Bienvenido.</b> Elegí una sección y te llevo directamente a ella.
+    </div>
+    <div class="guide-actions">
+      <button class="guide-action" data-href="index.html" data-text="<b>Inicio.</b> La entrada a HAYMOVIDA y su identidad."><span>Inicio</span><small>01</small></button>
+      <button class="guide-action" data-href="sello.html" data-text="<b>El sello.</b> Conocé el origen y la idea detrás del proyecto."><span>El sello</span><small>02</small></button>
+      <button class="guide-action" data-href="enzo.html" data-text="<b>Enzo Lagos.</b> Dirección, música, producción e ingeniería."><span>Dirección / Enzo</span><small>03</small></button>
+      <button class="guide-action" data-href="producciones.html" data-text="<b>Producciones.</b> Canciones, lanzamientos y trabajos musicales."><span>Producciones</span><small>04</small></button>
+      <button class="guide-action" data-href="shows.html" data-text="<b>Shows.</b> Eventos y experiencias en vivo de HAYMOVIDA."><span>Shows & eventos</span><small>05</small></button>
+      <button class="guide-action" data-href="contacto.html" data-text="<b>Contacto.</b> Artistas, productores, colaboraciones y propuestas."><span>Contacto</span><small>06</small></button>
+    </div>
+    <div class="guide-progress"><span id="guideProgress"></span></div>
+  </div>
+</aside>
+
+
+</div>
+
+<script>
+(function(){
+  const intro=document.getElementById("introScreen");
+  if(intro){
+    setTimeout(function(){
+      intro.classList.add("hide");
+      setTimeout(function(){ if(intro.parentNode) intro.parentNode.removeChild(intro); },320);
+    },700);
+  }
+
+  document.querySelectorAll(".reveal").forEach(el=>{
+    setTimeout(()=>el.classList.add("active"),80);
+  });
+
+  const launcher=document.getElementById("guideLauncher");
+  const panel=document.getElementById("guidePanel");
+  const close=document.getElementById("guideClose");
+  const message=document.getElementById("guideMessage");
+  const progress=document.getElementById("guideProgress");
+  if(launcher && panel){
+    const actions=[...document.querySelectorAll(".guide-action")];
+    function toggle(force){
+      const open=typeof force==="boolean"?force:!panel.classList.contains("open");
+      panel.classList.toggle("open",open);
+      launcher.setAttribute("aria-expanded",String(open));
+    }
+    launcher.addEventListener("click",()=>toggle());
+    close.addEventListener("click",()=>toggle(false));
+    actions.forEach((action,index)=>{
+      action.addEventListener("click",()=>{
+        message.innerHTML=action.dataset.text;
+        progress.style.width=((index+1)/actions.length*100)+"%";
+        window.location.href=action.dataset.href;
+      });
+    });
+    document.addEventListener("keydown",e=>{if(e.key==="Escape") toggle(false);});
+  }
+
+  const current=document.body.dataset.page;
+  document.querySelectorAll(".nav-links a[data-page]").forEach(a=>{
+    if(a.dataset.page===current) a.classList.add("active");
+  });
+})();
+</script>
+
+</body>
+</html>
