@@ -2708,6 +2708,77 @@ footer strong{
 @media (min-width:851px){
   .mobile-menu-btn,.mobile-menu-overlay{display:none !important;}
 }
+
+/* HAYMOVIDA MOBILE MENU — FINAL PATCH */
+@media (max-width:850px){
+  html,body{background:#0122CF !important;}
+  body{overflow-x:hidden !important;}
+  nav{z-index:4000 !important;}
+  .mobile-menu-overlay{
+    position:fixed !important;
+    inset:0 !important;
+    background:rgba(0,0,0,.52) !important;
+    z-index:3998 !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+  .mobile-menu-overlay.show{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+  .nav-links{
+    position:fixed !important;
+    top:72px !important;
+    right:12px !important;
+    left:12px !important;
+    width:auto !important;
+    height:auto !important;
+    max-height:calc(100dvh - 88px) !important;
+    margin:0 !important;
+    padding:18px !important;
+    box-sizing:border-box !important;
+    background:#0122CF !important;
+    border:1px solid rgba(255,255,255,.2) !important;
+    border-radius:18px !important;
+    box-shadow:0 20px 60px rgba(0,0,0,.45) !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:6px !important;
+    overflow-y:auto !important;
+    transform:translateY(-12px) !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    transition:transform .22s ease,opacity .18s ease,visibility .18s ease !important;
+    z-index:4001 !important;
+  }
+  .nav-links.open{
+    transform:translateY(0) !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+  .nav-links li{display:block !important;width:100% !important;}
+  .nav-links a{
+    display:block !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    padding:15px 14px !important;
+    color:#fff !important;
+    background:transparent !important;
+    border-radius:11px !important;
+    font-size:17px !important;
+    line-height:1.2 !important;
+    opacity:1 !important;
+  }
+  .nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.12) !important;color:#fff !important;}
+  .nav-links a::after{display:none !important;}
+  .mobile-menu-btn{z-index:4002 !important;}
+}
+
 </style>
 </head>
 <body data-page="contacto">
@@ -2755,11 +2826,6 @@ footer strong{
                 contactá directamente con HAYMOVIDA.
             </p>
 <div class="contact-items">
-<a class="contact-item" href="tel:+59892445038">
-
-                📞 092 445 038
-
-            </a>
 <a class="contact-item" href="https://instagram.com/haymovidauy" target="_blank">
 
                 Instagram · @haymovidauy
