@@ -2691,6 +2691,23 @@ footer strong{
   .cursor-glow{display:none !important;}
 }
 
+
+/* MOBILE FINAL FIX */
+@media (max-width:850px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden;}
+  nav{position:fixed !important;top:0;left:0;right:0;height:72px !important;min-height:72px !important;z-index:2000 !important;display:flex !important;align-items:center !important;justify-content:space-between !important;background:#0122CF !important;}
+  nav > a{display:flex !important;align-items:center !important;}
+  .mobile-menu-btn{display:flex !important;flex:0 0 44px !important;position:relative !important;}
+  .nav-links{top:0 !important;right:0 !important;height:100dvh !important;width:min(86vw,340px) !important;z-index:2001 !important;}
+  .page-content{padding-top:0 !important;}
+  .hero{padding-top:105px !important;}
+  .page-heading{padding-top:105px !important;}
+  .show-detail-section{padding-top:105px !important;}
+  .mobile-menu-overlay{z-index:2000 !important;}
+}
+@media (min-width:851px){
+  .mobile-menu-btn,.mobile-menu-overlay{display:none !important;}
+}
 </style>
 </head>
 <body data-page="shows">
@@ -2716,7 +2733,11 @@ footer strong{
     <li><a data-page="shows" href="shows.html">Shows</a></li>
     <li><a data-page="contacto" href="contacto.html">Contacto</a></li>
   </ul>
+  <button class="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu-overlay"></div>
 
 <main class="page-content">
 <section class="show-detail-section" hidden="" id="show-detail">
@@ -2846,5 +2867,20 @@ document.getElementById("showBack").href="shows.html";
 })();
 </script>
 
+
+<script>
+(function(){
+  const btn=document.querySelector('.mobile-menu-btn');
+  const menu=document.querySelector('.nav-links');
+  const overlay=document.querySelector('.mobile-menu-overlay');
+  if(!btn||!menu)return;
+  function closeMenu(){menu.classList.remove('open');overlay?.classList.remove('show');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  function openMenu(){menu.classList.add('open');overlay?.classList.add('show');btn.classList.add('open');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  btn.addEventListener('click',()=>menu.classList.contains('open')?closeMenu():openMenu());
+  overlay?.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  window.addEventListener('resize',()=>{if(window.innerWidth>850)closeMenu();});
+})();
+</script>
 </body>
 </html>
