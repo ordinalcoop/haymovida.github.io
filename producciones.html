@@ -1480,6 +1480,138 @@ footer strong {
 }
 
 
+
+/* =====================================================
+   PRODUCCIONES REALES — SPOTIFY
+===================================================== */
+.production-real{
+    padding:15px 15px 18px;
+}
+
+.production-cover{
+    height:210px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-end;
+    padding:20px;
+    background:
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.24), transparent 28%),
+        linear-gradient(145deg,#0122CF 0%,#06113F 68%,#030714 100%);
+    overflow:hidden;
+}
+
+.production-cover::after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    right:-52px;
+    top:-55px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 56px rgba(255,255,255,.018);
+}
+
+.production-index{
+    position:absolute;
+    top:17px;
+    left:19px;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    opacity:.72;
+}
+
+.production-type{
+    position:relative;
+    z-index:2;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    opacity:.72;
+    margin-bottom:7px;
+}
+
+.production-title{
+    position:relative;
+    z-index:2;
+    max-width:90%;
+    font-size:clamp(22px,2.5vw,32px);
+    line-height:.95;
+    letter-spacing:-1.5px;
+    font-weight:950;
+}
+
+.spotify-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    min-height:42px;
+    margin:0 0 10px;
+    border:1px solid rgba(1,34,207,.18);
+    border-radius:10px;
+    background:#F4F7FF;
+    color:#0122CF;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:900;
+    transition:.25s ease;
+}
+
+.spotify-btn span{
+    font-size:13px;
+}
+
+.spotify-btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(1,34,207,.38);
+    background:#fff;
+    box-shadow:0 8px 22px rgba(1,34,207,.12);
+}
+
+.spotify-embed{
+    display:block;
+    width:100%;
+    height:152px;
+    border-radius:12px;
+    margin:0;
+}
+
+.production-real h3{
+    color:#10182A !important;
+    margin-bottom:4px;
+}
+
+.production-real p{
+    color:#647089 !important;
+    margin-bottom:13px;
+}
+
+@media(max-width:850px){
+    .production-cover{
+        height:230px;
+    }
+
+    .spotify-embed{
+        height:152px;
+    }
+}
+
+@media(max-width:450px){
+    .production-cover{
+        height:220px;
+    }
+
+    .production-title{
+        font-size:28px;
+    }
+}
+
+
 /* =====================================================
    MOBILE
 ===================================================== */
@@ -2898,6 +3030,76 @@ footer strong{
   .mobile-menu-btn,.mobile-menu-overlay{display:none!important;}
 }
 
+
+/* PORTADAS REALES DE SPOTIFY */
+.real-cover{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:1/1;
+  min-height:0;
+  padding:0 !important;
+  background:#0b1220;
+  isolation:isolate;
+}
+.spotify-cover-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity .55s ease, transform .8s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+  z-index:0;
+}
+.real-cover.loaded .spotify-cover-img{
+  opacity:1;
+  transform:scale(1);
+}
+.real-cover:hover .spotify-cover-img{
+  transform:scale(1.055);
+  filter:saturate(1.08);
+}
+.cover-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.78) 100%);
+  pointer-events:none;
+}
+.cover-info{
+  position:absolute;
+  inset:auto 0 0;
+  z-index:2;
+  padding:1.15rem;
+  display:flex;
+  flex-direction:column;
+  gap:.25rem;
+  color:#fff;
+}
+.cover-info .production-index,
+.cover-info .production-type,
+.cover-info .production-title{
+  position:static !important;
+}
+.cover-info .production-title{
+  font-size:clamp(1rem,2vw,1.35rem);
+  line-height:1.05;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.cover-loading{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  z-index:0;
+  font-size:.68rem;
+  letter-spacing:.18em;
+  opacity:.55;
+}
+.real-cover.loaded .cover-loading{display:none}
+
 </style>
 </head>
 <body data-page="producciones">
@@ -2943,95 +3145,116 @@ footer strong{
     </h2>
 <p class="section-description reveal">
 
-        Una selección de producciones, canciones y proyectos
-        realizados dentro del universo HAYMOVIDA.
+        Una selección de lanzamientos y trabajos musicales vinculados al universo HAYMOVIDA.
 
     </p>
 <div class="music-grid">
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
+
+<article class="music-card reveal production-real">
+    <div class="music-cover production-cover">
+        <span class="production-index">01</span>
+        <span class="production-type">SINGLE</span>
+        <span class="production-title">OJOS CLAROS</span>
+    </div>
+    <h3>OJOS CLAROS</h3>
+    <p>EnzzoLGA · HAYMOVIDA</p>
+    <a class="spotify-btn" href="https://open.spotify.com/track/5vmiUAd4OipSLSuuq3X9Ef" target="_blank" rel="noopener noreferrer">
+        <span>▶</span> Escuchar en Spotify
+    </a>
+    <iframe
+        class="spotify-embed"
+        src="https://open.spotify.com/embed/track/5vmiUAd4OipSLSuuq3X9Ef?utm_source=generator&theme=0"
+        title="OJOS CLAROS — EnzzoLGA"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </article>
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
+
+<article class="music-card reveal production-real">
+    <div class="music-cover production-cover">
+        <span class="production-index">02</span>
+        <span class="production-type">SINGLE</span>
+        <span class="production-title">WACHIN</span>
+    </div>
+    <h3>WACHIN</h3>
+    <p>Belcha · HAYMOVIDA</p>
+    <a class="spotify-btn" href="https://open.spotify.com/track/6C50R0MDHEtYk7bgCx8ufd" target="_blank" rel="noopener noreferrer">
+        <span>▶</span> Escuchar en Spotify
+    </a>
+    <iframe
+        class="spotify-embed"
+        src="https://open.spotify.com/embed/track/6C50R0MDHEtYk7bgCx8ufd?utm_source=generator&theme=0"
+        title="WACHIN — Belcha"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </article>
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
+
+<article class="music-card reveal production-real">
+    <div class="music-cover production-cover">
+        <span class="production-index">03</span>
+        <span class="production-type">SINGLE</span>
+        <span class="production-title">EN LA CLETA</span>
+    </div>
+    <h3>EN LA CLETA</h3>
+    <p>Belcha, LEMOSS · HAYMOVIDA</p>
+    <a class="spotify-btn" href="https://open.spotify.com/track/5eujedUSOdEDlVjXBjCTMx" target="_blank" rel="noopener noreferrer">
+        <span>▶</span> Escuchar en Spotify
+    </a>
+    <iframe
+        class="spotify-embed"
+        src="https://open.spotify.com/embed/track/5eujedUSOdEDlVjXBjCTMx?utm_source=generator&theme=0"
+        title="EN LA CLETA — Belcha, LEMOSS"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </article>
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
+
+<article class="music-card reveal production-real">
+    <div class="music-cover production-cover">
+        <span class="production-index">04</span>
+        <span class="production-type">SINGLE</span>
+        <span class="production-title">LA PARA DEL URUGUAY</span>
+    </div>
+    <h3>LA PARA DEL URUGUAY</h3>
+    <p>LEMOSS · HAYMOVIDA</p>
+    <a class="spotify-btn" href="https://open.spotify.com/track/0WBqmXBZSUBsoVryS2Yuyt" target="_blank" rel="noopener noreferrer">
+        <span>▶</span> Escuchar en Spotify
+    </a>
+    <iframe
+        class="spotify-embed"
+        src="https://open.spotify.com/embed/track/0WBqmXBZSUBsoVryS2Yuyt?utm_source=generator&theme=0"
+        title="LA PARA DEL URUGUAY — LEMOSS"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </article>
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
+
+<article class="music-card reveal production-real">
+    <div class="music-cover production-cover">
+        <span class="production-index">05</span>
+        <span class="production-type">ÁLBUM</span>
+        <span class="production-title">CRUELLA</span>
+    </div>
+    <h3>CRUELLA</h3>
+    <p>efe.uy · HAYMOVIDA</p>
+    <a class="spotify-btn" href="https://open.spotify.com/album/6aTGespEyGIMGNdgPNMRth" target="_blank" rel="noopener noreferrer">
+        <span>▶</span> Escuchar en Spotify
+    </a>
+    <iframe
+        class="spotify-embed"
+        src="https://open.spotify.com/embed/album/6aTGespEyGIMGNdgPNMRth?utm_source=generator&theme=0"
+        title="CRUELLA — efe.uy"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </article>
-<article class="music-card reveal">
-<div class="music-cover">
-                TEMA EJEMPLO
-            </div>
-<h3>
-                TEMA EJEMPLO
-            </h3>
-<p>
-                Artista · Producción HAYMOVIDA
-            </p>
-<button class="play" onclick="playDemo(this)">
-                ▶
-            </button>
-</article>
+
 </div>
 </section>
 </main>
@@ -3144,5 +3367,36 @@ footer strong{
   window.addEventListener('resize',()=>{if(window.innerWidth>850)closeMenu();});
 })();
 </script>
+
+<script>
+/* Carga las portadas oficiales de Spotify para las producciones. */
+(async function loadSpotifyCovers(){
+  const covers = document.querySelectorAll(".real-cover[data-spotify-id]");
+  for (const cover of covers) {
+    const id = cover.dataset.spotifyId;
+    const img = cover.querySelector(".spotify-cover-img");
+    if (!id || !img) continue;
+
+    const type = cover.closest("article")?.querySelector(".spotify-embed")?.src?.includes("/album/") ? "album" : "track";
+    const spotifyUrl = `https://open.spotify.com/${type}/${id}`;
+
+    try {
+      const response = await fetch(
+        `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`
+      );
+      if (!response.ok) throw new Error("Spotify oEmbed no disponible");
+      const data = await response.json();
+
+      if (data.thumbnail_url) {
+        img.src = data.thumbnail_url;
+        img.addEventListener("load", () => cover.classList.add("loaded"), {once:true});
+      }
+    } catch (error) {
+      console.warn("No se pudo cargar la portada de Spotify:", id, error);
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
