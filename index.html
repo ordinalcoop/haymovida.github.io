@@ -2898,6 +2898,72 @@ footer strong{
   .mobile-menu-btn,.mobile-menu-overlay{display:none!important;}
 }
 
+
+/* HAYMOVIDA — PLAYLIST FEATURE */
+.playlist-feature{
+  position:relative;padding:150px 8% 155px;overflow:hidden;
+  background:radial-gradient(circle at 82% 50%,rgba(255,255,255,.10),transparent 32%),
+             radial-gradient(circle at 15% 80%,rgba(255,255,255,.055),transparent 25%),#0122CF;
+}
+.playlist-feature::before{
+  content:"PLAY";position:absolute;right:-35px;top:50%;transform:translateY(-50%);
+  font-size:clamp(130px,22vw,330px);line-height:.8;font-weight:950;letter-spacing:-16px;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.10);pointer-events:none;
+}
+.playlist-wrap{
+  position:relative;z-index:2;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(280px,.82fr) minmax(430px,1.18fr);
+  gap:80px;align-items:center;
+}
+.playlist-copy{max-width:540px}
+.playlist-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  font-size:11px;font-weight:900;letter-spacing:3px;color:#fff;
+}
+.playlist-eyebrow::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:#fff;
+  box-shadow:0 0 16px rgba(255,255,255,.8);
+}
+.playlist-copy h2{
+  font-size:clamp(48px,6.2vw,88px);line-height:.88;letter-spacing:-5px;
+  font-weight:950;color:#fff;margin-bottom:28px;
+}
+.playlist-copy h2 span{display:block;opacity:.68}
+.playlist-copy p{
+  max-width:510px;color:rgba(255,255,255,.82);font-size:17px;line-height:1.8;margin-bottom:32px;
+}
+.playlist-link{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 19px;border-radius:9px;
+  background:#fff;color:#0122CF;text-decoration:none;font-size:12px;font-weight:900;
+  transition:.3s ease;box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+.playlist-link:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.playlist-frame{
+  position:relative;padding:10px;border:1px solid rgba(255,255,255,.24);border-radius:24px;
+  background:rgba(255,255,255,.075);box-shadow:0 30px 90px rgba(0,0,0,.20);backdrop-filter:blur(12px);
+}
+.playlist-frame::before{
+  content:"HAYMOVIDA / SPOTIFY";position:absolute;left:22px;top:-10px;z-index:3;
+  padding:4px 9px;border:1px solid rgba(255,255,255,.25);border-radius:5px;
+  background:#0122CF;color:#fff;font-size:8px;font-weight:900;letter-spacing:2px;
+}
+.playlist-frame iframe{display:block;width:100%;min-height:430px;border:0;border-radius:16px}
+.playlist-note{margin-top:12px;text-align:right;color:rgba(255,255,255,.55);font-size:9px;font-weight:800;letter-spacing:1.5px}
+@media(max-width:850px){
+  .playlist-feature{padding:105px 7% 110px}
+  .playlist-feature::before{right:-30px;top:8%;transform:none;font-size:115px}
+  .playlist-wrap{grid-template-columns:1fr;gap:48px}
+  .playlist-copy h2{font-size:clamp(48px,14vw,72px);letter-spacing:-4px}
+  .playlist-copy p{font-size:15px}
+  .playlist-frame{padding:7px;border-radius:18px}
+  .playlist-frame iframe{min-height:390px}
+}
+@media(max-width:450px){
+  .playlist-feature{padding:90px 16px 95px}
+  .playlist-copy h2{font-size:52px}
+  .playlist-frame iframe{min-height:380px}
+}
+
 </style>
 </head>
 <body data-page="inicio">
@@ -2957,9 +3023,9 @@ footer strong{
                 Explorar música
 
             </a>
-<a class="btn btn-secondary" href="shows.html">
+<a class="btn btn-secondary" href="contacto.html">
 
-                Ver shows
+                Trabajá con nosotros
 
             </a>
 </div>
@@ -2972,6 +3038,22 @@ footer strong{
 <div class="orbit-dot"></div>
 </div>
 </section>
+
+<section class="playlist-feature" id="playlist">
+  <div class="playlist-wrap">
+    <div class="playlist-copy reveal">
+      <div class="playlist-eyebrow">ESCUCHÁ HAYMOVIDA</div>
+      <h2>Conocé parte <span>de nuestro trabajo.</span></h2>
+      <p>Música, artistas y producciones que forman parte de la movida. Podés conocer parte de nuestro trabajo acá y descubrir lo que estamos creando.</p>
+      <a class="playlist-link" href="https://open.spotify.com/playlist/4d35nCevt2o7lagfQSJRqv" target="_blank" rel="noopener">ABRIR PLAYLIST EN SPOTIFY ↗</a>
+    </div>
+    <div class="playlist-frame reveal">
+      <iframe src="https://open.spotify.com/embed/playlist/4d35nCevt2o7lagfQSJRqv?utm_source=generator&theme=0" title="Playlist HAYMOVIDA en Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <div class="playlist-note">UNA PARTE DE LA MOVIDA · HAYMOVIDA · UY</div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -2979,7 +3061,7 @@ footer strong{
     <strong>HAYMOVIDA</strong><br>
     Sello independiente · Uruguay
   </div>
-  <div>© 2025 — HAYMOVIDA</div>
+  <div>© 2026 — HAYMOVIDA</div>
 </footer>
 
 
